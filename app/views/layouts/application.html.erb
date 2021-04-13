@@ -4,42 +4,56 @@
     <title>Bookers2</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    
+    <script src="https://kit.fontawesome.com/40db371c68.js" crossorigin="anonymous"></script>
+    
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <header>
     <% if user_signed_in? %>
     
-      <li>
-      <%= link_to 'Home', user_path(current_user.id) %>
-      </li>
-      
-      <li>
-        <%= link_to "User", users_path %>
-      </li>
-      
+    　<%= link_to user_path(current_user.id) do %>
+    　<i class="fas fa-home"></i> Home
+    　<% end %>
     
-      <li>
-        <%= link_to "Books", books_path %>
-      </li>
+    　<%= link_to users_path do %>
+    　<i class="fas fa-users"></i> Users
+    　<% end %>
       
+      <%= link_to books_path do %>
+    　<i class="fas fa-book-open"></i> Books
+    　<% end %>
     
-      <li>
-        <%= link_to "logout", destroy_user_session_path, method: :delete %>
-      </li>
+      <%= link_to destroy_user_session_path, method: :delete do %>
+    　<i class="fas fa-sign-out-alt"></i> logout
+    　<% end %>
       
-
     <% else %>
-      <li>
-        <%= link_to "sign UP", new_user_registration_path %>
-      </li>
-      <li>
-        <%= link_to "login", new_user_session_path %>
-      </li>
-    <% end %>
-
+    
+     <%= link_to "/" do %>
+     <i class="fas fa-home"></i> Home
+     <% end %>
+    
+     <%= link_to homes_about_path do %>
+     <i class="fas fa-link"></i> About
+     <% end %> 
+      
+      <%= link_to new_user_registration_path do %>
+     <i class="fas fa-user-plus"></i> sign up
+     <% end %> 
+     
+      <%= link_to new_user_session_path do %>
+     <i class="fas fa-sign-in-alt"></i> login
+     <% end %> 
+     
+     <% end %>
+    </header>
     <%= yield %>
+   <footer>
+     <p>CopyRight Infratop.inc</p>
+   </footer>
   </body>
 </html>
