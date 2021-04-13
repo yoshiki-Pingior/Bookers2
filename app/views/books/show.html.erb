@@ -1,0 +1,21 @@
+<%= render 'users/list', user: @user %>
+<%= render 'books/list', book: @book %>
+
+<div class="post-body">
+  <h2>Book detail</h2>
+  <%= attachment_image_tag @book.user, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: "no_image.jpg" %>
+
+  <%= link_to user_path(current_user.id) do %>
+  <p><%= @book.user.name %></p>
+  <% end %>
+
+
+  <p>Title：<%= @book.title %></p>
+  <p>Opinion：<%= @book.body %></p>
+
+  <% if @book.user == current_user %>
+  <%= link_to "Edit", edit_book_path(@book.id) %>
+  |
+  <%= link_to "Destroy", book_path(@book), method: :delete %>
+  <% end %>
+</div>

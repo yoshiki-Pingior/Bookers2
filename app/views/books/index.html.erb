@@ -1,0 +1,17 @@
+<%= render 'users/list', user: @user %>
+<%= render 'books/list', book: @book %>
+
+
+<% @books.each do |book| %>
+<div>
+
+  <p>名前：<%= book.user_id %></p>
+
+  <%= link_to book_path(book.id) do %>
+  <p>説明：<%= book.title %></p>
+  <% end %>
+
+  <p>Opinion：<%= book.body %></p>
+
+</div>
+<% end %>
