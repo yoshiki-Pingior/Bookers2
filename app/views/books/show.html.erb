@@ -1,21 +1,53 @@
-<%= render 'users/list', user: @user %>
-<%= render 'books/list', book: @book %>
+<main>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <%= render 'users/list', user: @user %>
+        <%= render 'books/list', book: @book %>
+      </div>
 
-<div class="post-body">
-  <h2>Book detail</h2>
-  <%= attachment_image_tag @book.user, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: "no_image.jpg" %>
+      <div class="col-md-8 offset-md-1">
+        <h2>Book detail</h2>
+        <table class="table">
+          <tbody>
+            
+            <tr>
 
-  <%= link_to user_path(current_user.id) do %>
-  <p><%= @book.user.name %></p>
-  <% end %>
+              <td>
+                <%= link_to user_path(@user.id) do %>
+                <%= attachment_image_tag @user, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: "no_image.jpg" %>
+                <% end %>
+                <%= link_to user_path(current_user.id) do %>
+                <p><%= @book.user.name %></p>
+                <% end %>
+              </td>
 
+              <td>
+                <%= link_to book_path(@book.id) do %>
+                <%= @book.title %>
+                <% end %>
+              </td>
+              <td>
+                <%= @book.body %>
+              </td>
+              
+              <td>
+                <% if @book.user == current_user %>
+                <%= link_to "Edit", edit_book_path(@book.id), class: 'btn btn-sm btn-success edit_book_path'%>
+                <% end %>
+              </td>
+              
+              <td>
+                <% if @book.user == current_user %>
+                <%= link_to "Destroy", book_path(@book), method: :delete, "data-confirm" => "本当に削除しますか？", class: 'btn btn-sm btn-danger destroy_book_path' %>
+                <% end %>
+              </td>
 
-  <p>Title：<%= @book.title %></p>
-  <p>Opinion：<%= @book.body %></p>
-
-  <% if @book.user == current_user %>
-  <%= link_to "Edit", edit_book_path(@book.id) %>
-  |
-  <%= link_to "Destroy", book_path(@book), method: :delete %>
-  <% end %>
-</div>
+            
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</main>

@@ -41,12 +41,6 @@
   padding: 0.5rem 1rem;
  }
 
- .container {
-  padding-right: 0;
-  padding-left: 0;
- }
-
-
  .navbar-brand {
   color: #fff;
  }
@@ -90,7 +84,14 @@
   list-style: none;
  }
 
+.nav-link {
+ display: flex;
+ padding: 0.5rem 1rem;
+}
 
+.text-ligh{
+ color: #f8f9fa !important;
+}
 
  .mt-5 {
   margin-top: 3rem !important;
@@ -100,7 +101,7 @@
   display: flex;
   flex-wrap: wrap;
   margin-right: -15px;
-  margin-lest: -15px;
+  margin-left: -15px;
  }
 
  .mx-auto {
@@ -112,3 +113,16 @@
   margin-top: 0;
   margin-bottom: 1rem;
  }
+
+ .fa, .fas {
+  line-height: normal;
+  display: inline-block;
+  font-variant: normal;
+  text-rendering: auto;
+ }
+ 
+ div.field,
+ div.actions {
+  margin-bottom: 10px;
+ }
+  
