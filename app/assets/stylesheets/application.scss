@@ -125,4 +125,31 @@
  div.actions {
   margin-bottom: 10px;
  }
-  
+ 
+ 
+ .error_explanation {
+  color: red;
+ }
+ 
+ h3 {
+  font-size: 1.75rem;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  line-height: 1.2;
+ }
+ 
+ ul {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  display: block;
+  list-style-type: disc;
+ }
+ 
+ li {
+  display: list-item;
+  text-align: -webkit-match-parent;;
+ }
+ 
+ .flash {
+  color: green;
+ }

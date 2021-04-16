@@ -12,7 +12,7 @@ class BooksController < ApplicationController
     redirect_to book_path(@book.id)
     else
       @books = Book.all
-      render 'books/index'
+      render 'index'
     end
   end
 
@@ -36,8 +36,13 @@ class BooksController < ApplicationController
 
   def update
     @book = Book.find(params[:id])
-    @book.update(book_params)
+    if @book.update(book_params)
+      flash[:notice] = "You have updated book successfully."
     redirect_to book_path(@book.id)
+    else
+    @books = Book.all
+    render 'edit'
+    end
   end
 
 
@@ -50,6 +55,6 @@ class BooksController < ApplicationController
   private
 
   def book_params
-    params.permit(:user_id, :title, :body)
+    params.require(:book).permit(:user_id, :title, :body)
   end
 end
