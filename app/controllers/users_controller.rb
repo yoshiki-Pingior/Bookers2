@@ -3,12 +3,13 @@ class UsersController < ApplicationController
     @users = User.all
     @user = current_user
     @book = Book.new
+    
   end
 
   def show
     @user = User.find(params[:id])
     @books = Book.where(user_id:params[:id])
-    @user = current_user
+    
     @book =Book.new
   end
 
@@ -30,6 +31,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :profile_image, :profile_intro)
+    params.require(:user).permit(:name, :profile_image, :introduction)
   end
 end
