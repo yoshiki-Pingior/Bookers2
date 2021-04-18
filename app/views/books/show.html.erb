@@ -2,8 +2,11 @@
   <div class="container">
     <div class="row">
       <div class="col-md-3">
-        <%= render 'users/list', user: @user %>
-        <%= render 'books/list', book: @book %>
+        
+<%= render 'users/list', user: @user %>
+        
+        
+        <%= render 'books/list', book: @newbook %>
       </div>
 
       <div class="col-md-8 offset-md-1">
@@ -15,9 +18,9 @@
 
               <td>
                 <%= link_to user_path(@book.user.id) do %>
-                <%= attachment_image_tag @book.user, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: "no_image.jpg" %>
+                <%= attachment_image_tag @book.user, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: "no_image.jpg", size:'40x40' %>
                 <% end %>
-                <%= link_to user_path(current_user.id) do %>
+                <%= link_to user_path(@book.user.id) do %>
                 <p><%= @book.user.name %></p>
                 <% end %>
               </td>
